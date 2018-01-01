@@ -2,14 +2,14 @@
 
 ## Overview
 
-This is the REST service of VisMiner Web. The main objective of this service is to provide a interface between the RepositoryMiner and VisMiner projects.
+This is the REST service of the VisMiner Web project. The main objective of this service is to provide a interface between the RepositoryMiner and VisMiner Web projects.
 
 ## Getting started
 
 Clone the repository:
 ```sh
 git clone https://github.com/felipegustavo/visminer-web-server.git
-cd visminer-web-serverhttp://localhost:4040/api
+cd visminer-web-serverhttp://localhost:3000/api
 ```
 
 Install NodeJS: https://nodejs.org/en/download/package-manager/
