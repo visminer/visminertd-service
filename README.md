@@ -9,7 +9,7 @@ This is the REST service of the VisMiner Web project. The main objective of this
 Clone the repository:
 ```sh
 git clone https://github.com/felipegustavo/visminer-web-server.git
-cd visminer-web-serverhttp://localhost:3000/api
+cd visminer-web-server
 ```
 
 Install NodeJS: https://nodejs.org/en/download/package-manager/
