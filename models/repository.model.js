@@ -12,7 +12,4 @@ const RepositorySchema = new mongoose.Schema({
     }
 });
 
-/**
- * @typedef RepositoryModel
- */
 export default mongoose.model('RepositoryModel', RepositorySchema, 'rm_repository');

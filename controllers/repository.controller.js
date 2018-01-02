@@ -1,14 +1,7 @@
 import RepositoryModel from './../models/repository.model';
 
-class RepositoryController {
-
-    static helloWord() {
-        return 'RM Repository Web API';
-    }
-
-}
-
-/**
- * @typedef RepositoryController
- */
-export default RepositoryController;
+exports.findAll = (req, res, next) => {
+    RepositoryModel.find({}, {contributors: 0})
+    .then(r => res.json(r))
+    .catch(e => next(e));
+};
