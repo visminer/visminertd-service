@@ -1,12 +1,9 @@
 import mongoose from 'mongoose';
 
 const TechnicalDebtSchema = new mongoose.Schema({
-    reference: String,
-    commit: String,
-    commit_date: Date,
-    repository: mongoose.SchemaTypes.ObjectId,
     filename: String,
     filehash: Number,
+    analysis_report: mongoose.SchemaTypes.ObjectId,
     indicators: [{
         name: String,
         occurrences: Number

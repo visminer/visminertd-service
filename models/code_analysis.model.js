@@ -23,7 +23,7 @@ const CodeAnalysisSchema = new mongoose.Schema({
             codesmells: [String]
         }]
     }],
-    analysis_config: mongoose.SchemaTypes.ObjectId
+    analysis_report: mongoose.SchemaTypes.ObjectId
 });
 
 /**

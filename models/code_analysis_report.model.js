@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const CodeAnalysisConfigSchema = new mongoose.Schema({
+const CodeAnalysisReportSchema = new mongoose.Schema({
     reference: String,
     commit: String,
     commit_date: Date,
@@ -15,6 +15,6 @@ const CodeAnalysisConfigSchema = new mongoose.Schema({
 });
 
 /**
- * @typedef CodeAnalysisConfigModel
+ * @typedef CodeAnalysisReportModel
  */
-export default mongoose.model('CodeAnalysisConfigModel', CodeAnalysisConfigSchema, 'rm_code_analysis_config');
+export default mongoose.model('CodeAnalysisReportModel', CodeAnalysisReportSchema, 'rm_code_analysis_report');
