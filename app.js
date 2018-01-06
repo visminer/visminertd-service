@@ -34,13 +34,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// routes
-app.use('/', router);
-
 app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   next();
 })
+
+// routes
+app.use('/', router);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
