@@ -8,4 +8,6 @@ router.get('/', function(req, res, next) {
     res.render('index', { title: TechnicalDebtController.helloWord() });
 });
 
+router.get('/commit/:commit', TechnicalDebtController.findByRepository);
+
 export default router;
