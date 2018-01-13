@@ -8,4 +8,6 @@ router.get('/', function(req, res, next) {
     res.render('index', { title: TechnicalDebtReportController.helloWord() });
 });
 
+router.get('/repository/:repository', TechnicalDebtReportController.listFullReportByRepository);
+
 export default router;

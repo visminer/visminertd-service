@@ -10,6 +10,32 @@ const TechnicalDebtReportSchema = new mongoose.Schema({
     types: [String]
 });
 
+TechnicalDebtReportSchema.statics = {
+
+	listFullReportByRepository(repository) {
+		return this.aggregate(
+	      [
+	        {
+	          $match: {
+	            repository: mongoose.Types.ObjectId(repository)
+	          }
+	        },
+	        {
+	          $lookup:
+	            {
+	              from: "rm_technical_debt",
+	              localField: "_id",
+	              foreignField: "analysis_report",
+	              as: "technicaldebt"
+	            }
+	       }
+	      ]
+	    )
+	      .exec();
+	}
+}
+
+
 /**
  * @typedef TechnicalDebtReportModel
  */
