@@ -14,6 +14,41 @@ const CodeAnalysisReportSchema = new mongoose.Schema({
     }]
 });
 
+
+CodeAnalysisReportSchema.statics = {
+
+  countFilesByReference(repository_id) {
+    return this.aggregate(
+      [
+        {
+          $match: {
+            repository: mongoose.Types.ObjectId(repository_id)
+          }
+        },
+        {
+          $lookup:
+            {
+              from: "rm_code_analysis",
+              localField: "_id",
+              foreignField: "analysis_report",
+              as: "code_analysis"
+            }
+        },
+        {
+          $unwind: "$code_analysis"
+        },
+        {
+          $group: {
+            _id: "$reference",
+            totalFiles: { "$sum": 1 },
+          }
+        },
+      ]
+    )
+      .exec();
+  },
+} 
+
 /**
  * @typedef CodeAnalysisReportModel
  */
