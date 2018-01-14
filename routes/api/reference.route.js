@@ -9,5 +9,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/repository/:repository_id', ReferenceController.findByRepository);
+router.get('/repository/:repository_id/sorted', ReferenceController.findByRepositorySorted);
 
 export default router;
