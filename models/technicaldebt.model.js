@@ -11,7 +11,13 @@ const TechnicalDebtSchema = new mongoose.Schema({
     debts: [{
         name: String,
         value: Number
-    }]
+    }],
+    responsible: String,
+    description: String,
+    intentional: String,
+    principal: Number,
+    interest: Number,
+    interest_probability: Number
 });
 
 /**

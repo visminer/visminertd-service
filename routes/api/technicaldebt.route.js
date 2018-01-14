@@ -15,5 +15,6 @@ router.get('/commit/:commit', TechnicalDebtController.findByRepository);
 router.put('/confirmdebt', TechnicalDebtController.confirmDebt);
 router.put('/removedebt', TechnicalDebtController.removeDebt);
 router.put('/confirmall', TechnicalDebtController.confirmAllByReference);
+router.put('/update', TechnicalDebtController.update);
 
 export default router;

@@ -18,6 +18,12 @@ exports.findByRepository = (req, res, next) => {
     .catch(e => next(e));
 }
 
+exports.update = (req, res, next) => {
+    TechnicalDebtModel.findByIdAndUpdate(req.body._id, req.body)
+    .then(r => res.json({ success: true }))
+    .catch(e => next(e));
+}
+
 exports.confirmDebt = (req, res, next) => {
     changeDebtValue(req, res, next, 1);    
 }
