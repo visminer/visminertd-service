@@ -5,6 +5,7 @@ const ReferenceSchema = new mongoose.Schema({
     name: String,
     path: String,
     type: String,
+    last_commit_date: Date,
     commits: [String]
 });
 

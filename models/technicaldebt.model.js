@@ -4,6 +4,9 @@ const TechnicalDebtSchema = new mongoose.Schema({
     filename: String,
     filehash: Number,
     analysis_report: mongoose.SchemaTypes.ObjectId,
+    commit: String,
+    commit_date: Date,
+    repository: mongoose.SchemaTypes.ObjectId,
     indicators: [{
         name: String,
         occurrences: Number
