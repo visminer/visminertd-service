@@ -32,6 +32,29 @@ TechnicalDebtReportSchema.statics = {
 	      ]
 	    )
 	      .exec();
+	},
+
+	listFullReportByRepoAndRef(repository, reference) {
+		return this.aggregate(
+	      [
+	        {
+	          $match: {
+	            repository: mongoose.Types.ObjectId(repository),
+	            reference: reference,
+	          }
+	        },
+	        {
+	          $lookup:
+	            {
+	              from: "rm_technical_debt",
+	              localField: "_id",
+	              foreignField: "analysis_report",
+	              as: "technicaldebt"
+	            }
+	       },
+	      ]
+	    )
+	      .exec();
 	}
 }
 

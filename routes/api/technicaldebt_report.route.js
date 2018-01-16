@@ -9,5 +9,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/repository/:repository', TechnicalDebtReportController.listFullReportByRepository);
+router.get('/repository/:repository/reference/:reference', TechnicalDebtReportController.listFullReportByRepoAndRef);
 
 export default router;
