@@ -53,6 +53,20 @@ exports.confirmAllByReference = (req, res, next) => {
     .catch(e => next(e));
 }
 
+exports.getFileDebtHistory = (req, res, next) => {
+    const date = new Date(req.params.commit_date);
+    TechnicalDebtModel.find({
+        repository: mongoose.Types.ObjectId(req.params.repository_id),
+        filehash: req.params.filehash,
+        commit_date: { $lte: date }
+    })
+    .sort({ commit_date: -1 })
+    .then(r => res.json(r))
+    .catch(e => next(e));
+}
+
+// HELPERS
+
 var changeDebtValue = (req, res, next, value) => {
     TechnicalDebtModel.findById(mongoose.Types.ObjectId(req.body._id))
     .then(file => {

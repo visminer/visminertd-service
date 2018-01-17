@@ -24,6 +24,7 @@ const CodeAnalysisSchema = new mongoose.Schema({
         }]
     }],
     analysis_report: mongoose.SchemaTypes.ObjectId,
+    reference: String,
     commit: String,
     commit_date: Date,
     repository: mongoose.SchemaTypes.ObjectId
