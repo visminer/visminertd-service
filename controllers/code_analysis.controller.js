@@ -1,4 +1,4 @@
-import mongoose from mongoose;
+import mongoose from 'mongoose';
 
 import CodeAnalysisModel from './../models/code_analysis.model';
 
