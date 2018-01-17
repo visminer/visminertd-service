@@ -8,4 +8,7 @@ router.get('/', function(req, res, next) {
     res.render('index', { title: CodeAnalysisController.helloWord() });
 });
 
+// GET
+router.get('/analysis_history/repository/:repository_id/filehash/:filehash/commit_date/:commit_date', CodeAnalysisController.getFileAnalysisHistory);
+
 export default router;

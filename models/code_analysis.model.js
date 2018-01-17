@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 
 const CodeAnalysisSchema = new mongoose.Schema({
     filename: String,
+    filehash: Number,
     metrics: [{
         name: String,
         value: Number
