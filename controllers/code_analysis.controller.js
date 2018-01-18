@@ -10,6 +10,8 @@ exports.getFileAnalysisHistory = (req, res, next) => {
         commit_date: { $lte: date }
     })
     .sort({ commit_date: -1 })
+    .select({ 'classes.methods': 0 })
+    .lean()
     .then(r => res.json(r))
     .catch(e => next(e));
 }
