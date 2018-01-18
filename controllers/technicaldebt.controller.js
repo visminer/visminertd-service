@@ -32,6 +32,14 @@ exports.removeDebt = (req, res, next) => {
     changeDebtValue(req, res, next, -1);    
 }
 
+exports.payDebt = (req, res, next) => {
+    changeDebtValue(req, res, next, 2);    
+}
+
+exports.paidDebt = (req, res, next) => {
+    changeDebtValue(req, res, next, 3);    
+}
+
 exports.confirmAllByReference = (req, res, next) => {
     TechnicalDebtReportModel.findOne(
         { commit: req.body.commit },
@@ -61,6 +69,15 @@ exports.getFileDebtHistory = (req, res, next) => {
         commit_date: { $lte: date }
     })
     .sort({ commit_date: -1 })
+    .then(r => res.json(r))
+    .catch(e => next(e));
+}
+
+exports.findByRepositoryAndReference = (req, res, next) => {
+    TechnicalDebtModel.find({
+        repository: mongoose.Types.ObjectId(req.params.repository_id),
+        reference: req.params.reference,
+    })
     .then(r => res.json(r))
     .catch(e => next(e));
 }
