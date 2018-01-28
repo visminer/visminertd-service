@@ -15,3 +15,15 @@ exports.getFileAnalysisHistory = (req, res, next) => {
     .then(r => res.json(r))
     .catch(e => next(e));
 }
+
+exports.getByCommitAndFilehash = (req, res, next) => {
+    CodeAnalysisModel.findOne({
+        commit: req.params.commit,
+        filehash: req.params.filehash
+    }, {
+        classes: 1
+    })
+    .lean()
+    .then(r => res.json(r))
+    .catch(e => next(e));
+}
