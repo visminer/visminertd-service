@@ -10,6 +10,7 @@ import referenceRouter from './reference.route';
 import repositoryRouter from './repository.route';
 import technicalDebtRouter from './technicaldebt.route';
 import technicalDebtReportRouter from './technicaldebt_report.route';
+import excommentRouter from './excomment.route';
 
 const router = express.Router();
 
@@ -23,5 +24,6 @@ router.use('/reference', referenceRouter);
 router.use('/repository', repositoryRouter);
 router.use('/technicaldebt', technicalDebtRouter);
 router.use('/technicaldebt_report', technicalDebtReportRouter);
+router.use('/excomment', excommentRouter);
 
 export default router;
