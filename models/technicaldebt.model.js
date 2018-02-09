@@ -18,10 +18,11 @@ const TechnicalDebtSchema = new mongoose.Schema({
     }],
     responsible: String,
     description: String,
-    intentional: String,
+    intentional: Number,
     principal: Number,
     interest: Number,
-    interest_probability: Number
+    interest_probability: Number,
+    checked: Boolean
 });
 
 /**

@@ -18,6 +18,34 @@ exports.findByRepository = (req, res, next) => {
     .catch(e => next(e));
 }
 
+exports.findByFilter = (req, res, next) => {
+    TechnicalDebtReportModel.findOne(
+        { commit: req.params.commit },
+        { _id: 1 }
+    )
+    .then(reportResult => {
+        var query = { analysis_report: reportResult._id };
+
+        if (req.params.indicators != 'null') {
+            query['indicators.name'] = { $in: req.params.indicators.split(',') };
+        }
+        
+        if (req.params.checked != 'null') {
+            query['checked'] = req.params.checked == 'true';
+        }
+
+        if (req.params.intentional != 'null') {
+            query['intentional'] = Number(req.params.intentional);
+        }
+
+        console.log(query);
+        TechnicalDebtModel.find(query)
+        .then(r => res.json(r))
+        .catch(e => next(e));
+    })
+    .catch(e => next(e));
+}
+
 exports.update = (req, res, next) => {
     TechnicalDebtModel.findByIdAndUpdate(req.body._id, req.body)
     .then(r => res.json({ success: true }))
