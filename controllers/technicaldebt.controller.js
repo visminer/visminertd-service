@@ -3,42 +3,15 @@ import mongoose from 'mongoose'
 import TechnicalDebtModel from './../models/technicaldebt.model';
 import TechnicalDebtReportModel from './../models/technicaldebt_report.model';
 
-exports.findByRepository = (req, res, next) => {
-    TechnicalDebtReportModel.findOne(
-        { commit: req.params.commit },
-        { _id: 1 }
-    )
-    .then(reportResult => {
-        TechnicalDebtModel.find(
-            { analysis_report: reportResult._id }
-        )
-        .then(r => res.json(r))
-        .catch(e => next(e));
-    })
-    .catch(e => next(e));
-}
-
-exports.findByFilter = (req, res, next) => {
+exports.findByCommit = (req, res, next) => {
     TechnicalDebtReportModel.findOne(
         { commit: req.params.commit },
         { _id: 1 }
     )
     .then(reportResult => {
         var query = { analysis_report: reportResult._id };
+        createFilter(req.params, query);
 
-        if (req.params.indicators != 'null') {
-            query['indicators.name'] = { $in: req.params.indicators.split(',') };
-        }
-        
-        if (req.params.checked != 'null') {
-            query['checked'] = req.params.checked == 'true';
-        }
-
-        if (req.params.intentional != 'null') {
-            query['intentional'] = Number(req.params.intentional);
-        }
-
-        console.log(query);
         TechnicalDebtModel.find(query)
         .then(r => res.json(r))
         .catch(e => next(e));
@@ -74,11 +47,14 @@ exports.confirmAllByReference = (req, res, next) => {
         { _id: 1 }
     )
     .then(reportResult => {
-        TechnicalDebtModel.find({ analysis_report: reportResult._id })
+        var query = { analysis_report: reportResult._id };
+        createFilter(req.body.filter, query);
+        
+        TechnicalDebtModel.find(query)
         .then(docs => {
             docs.forEach(doc => {
                 doc.debts.forEach(debt => {
-                    debt.value = 1;
+                    debt.value = debt.value == 0 ? 1 : debt.value;
                 });
                 doc.save()
             });
@@ -127,4 +103,22 @@ var changeDebtValue = (req, res, next, value) => {
         });
     })
     .catch(e => next(e));
+}
+
+var createFilter = (req, query) => {
+    if (!req) {
+        return;
+    }
+
+    if (req.indicators && req.indicators !== 'null') {
+        query['indicators.name'] = { $in: req.indicators.toString().split(',') };
+    }
+
+    if (req.checked && req.checked !== 'null') {
+        query['checked'] = req.checked == 'true';
+    }
+
+    if (req.intentional && req.intentional !== 'null') {
+        query['intentional'] = Number(req.intentional);
+    }
 }
