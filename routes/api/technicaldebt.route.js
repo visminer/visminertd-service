@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 
 // GET
 router.get('/commit/:commit', TechnicalDebtController.findByCommit);
-router.get('/commit/:commit/indicators/:indicators/checked/:checked/intentional/:intentional', TechnicalDebtController.findByCommit);
+router.get('/commit/:commit/indicators/:indicators/checked/:checked/intentional/:intentional/filename/:filename', TechnicalDebtController.findByCommit);
 router.get('/debt_history/repository/:repository_id/filehash/:filehash/commit_date/:commit_date', TechnicalDebtController.getFileDebtHistory);
 router.get('/repository/:repository_id/reference/:reference', TechnicalDebtController.findByRepositoryAndReference);
 
