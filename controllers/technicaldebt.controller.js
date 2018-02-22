@@ -122,7 +122,7 @@ var createFilter = (req, query) => {
         query['intentional'] = Number(req.intentional);
     }
 
-    if (req.filename && req.filename !== '') {
+    if (req.filename && req.filename !== 'null') {
         query['filename'] = new RegExp(req.filename);
     }
 }
