@@ -12,12 +12,13 @@ const TechnicalDebtReportSchema = new mongoose.Schema({
 
 TechnicalDebtReportSchema.statics = {
 
-	listFullReportByRepository(repository) {
+	listFullReportByRepository(repository, commits) {
 		return this.aggregate(
 	      [
 	        {
 	          $match: {
-	            repository: mongoose.Types.ObjectId(repository)
+							repository: mongoose.Types.ObjectId(repository),
+							commit: { $in: commits }
 	          }
 	        },
 	        {

@@ -17,12 +17,13 @@ const CodeAnalysisReportSchema = new mongoose.Schema({
 
 CodeAnalysisReportSchema.statics = {
 
-  countFilesByReference(repository_id) {
+  countFilesByReference(repository_id, commits) {
     return this.aggregate(
       [
         {
           $match: {
-            repository: mongoose.Types.ObjectId(repository_id)
+            repository: mongoose.Types.ObjectId(repository_id),
+            commit: { $in: commits }
           }
         },
         {

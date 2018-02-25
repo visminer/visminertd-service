@@ -2,7 +2,7 @@ import TechnicalDebtReportModel from './../models/technicaldebt_report.model';
 
 
 exports.listFullReportByRepository = (req, res, next) => {
-    TechnicalDebtReportModel.listFullReportByRepository(req.params.repository)
+    TechnicalDebtReportModel.listFullReportByRepository(req.params.repository, req.params.commits.split(','))
     .then(tdReport => res.json(tdReport))
     .catch(e => next(e));
 }
