@@ -22,7 +22,8 @@ const TechnicalDebtSchema = new mongoose.Schema({
     principal: Number,
     interest: Number,
     interest_probability: Number,
-    checked: Boolean
+    checked: Boolean,
+    estimate: Number
 });
 
 /**
