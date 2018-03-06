@@ -19,8 +19,7 @@ ReferenceSchema.statics = {
       [
         {
           $match: {
-            repository: mongoose.Types.ObjectId(repository_id),
-            type: 'TAG'
+            repository: mongoose.Types.ObjectId(repository_id)
           }
         },
         {
