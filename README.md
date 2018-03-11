@@ -9,7 +9,7 @@ This is the REST service of the VisminerTD project. The main objective of this s
 Clone the repository:
 ```sh
 git clone https://github.com/visminer/visminertd-service.git
-cd visminer-web-server
+cd visminertd-service
 ```
 
 Install NodeJS: https://nodejs.org/en/download/package-manager/
