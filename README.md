@@ -1,8 +1,8 @@
-# VisMinerTD Service
+# VisminerTD Service
 
 ## Overview
 
-This is the REST service of the VisMinerTD project. The main objective of this service is to provide a interface between the RepositoryMiner and VisMinerTD project.
+This is the REST service of the VisminerTD project. The main objective of this service is to provide a interface between the RepositoryMiner and VisminerTD project.
 
 ## Getting started
 
