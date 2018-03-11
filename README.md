@@ -1,14 +1,14 @@
-# VisMiner Web Server
+# VisMinerTD Service
 
 ## Overview
 
-This is the REST service of the VisMiner Web project. The main objective of this service is to provide a interface between the RepositoryMiner and VisMiner Web projects.
+This is the REST service of the VisMinerTD project. The main objective of this service is to provide a interface between the RepositoryMiner and VisMinerTD project.
 
 ## Getting started
 
 Clone the repository:
 ```sh
-git clone https://github.com/felipegustavo/visminer-web-server.git
+git clone https://github.com/visminer/visminertd-service.git
 cd visminer-web-server
 ```
 
